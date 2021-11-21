@@ -1,7 +1,7 @@
 # Spirit Rend
 ![Spirit Rend](./raw-assets/ss.png)
 
-My entry for [Godot Wild Jam #39](https://godotwildjam.com)
+My unfinished entry for [Godot Wild Jam #39](https://godotwildjam.com)
 
 This was the first game jam that I was able to actually make something in, and despite the long jam duration I was barely able to end up with a prototype.
 
@@ -27,6 +27,7 @@ The theme of the jam was **inversion**, so I decided to make a game where the ef
     - Daimyo (boss)
 - Modeling the barracks building
 - Modeling and animate the Spirit Rend device
+- Fixing archery calculations
 - Implementing boss logic
 - Implementing interstitials (e.g. story text displayed before and after the game)
 - Adding SFX and music
