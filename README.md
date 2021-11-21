@@ -1,4 +1,6 @@
 # Spirit Rend
+![Spirit Rend](./raw-assets/ss.png)
+
 My entry for [Godot Wild Jam #39](https://godotwildjam.com)
 
 This was the first game jam that I was able to actually make something in, and despite the long jam duration I was barely able to end up with a prototype.
@@ -7,7 +9,7 @@ That said, I've gained an enormous amount of experience while making it and I'm 
 
 I mean, before I joined this jam I couldn't even make a single grid map with a consistent look, but for the jam alone I was able to make 3 separate sets of wall tiles that actually worked.
 
-In addition to the Godot project itself I've also included the raw Krita, Photoshop and Blender files I used to make the assets.
+In addition to the Godot project itself I've also included the raw Krita, Photoshop and Blender files I used to make the assets. Check them out at the [raw-assets](./raw-assets) folder.
 
 ## Jam Theme
 The theme of the jam was **inversion**, so I decided to make a game where the effects of damage and healing would be reversed at intervals that got shorter over time. I retrofitted this mechanic into the story by imagining a daimyo (aka feudal lord) who came up with a device that could reverse the effects of yin and yang.
