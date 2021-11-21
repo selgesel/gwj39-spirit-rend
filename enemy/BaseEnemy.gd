@@ -17,7 +17,6 @@ onready var _senses: Spatial = $Senses
 
 func _ready():
     movement.target = self
-    movement.rotate_target = _skin
     health.connect("depleted", self, "_on_health_depleted")
 
     var navs := get_tree().get_nodes_in_group(navigation_key)
@@ -28,12 +27,17 @@ func _ready():
         if sense.get("sense_name"):
             sense.connect("detected", self, "_on_sense_detected", [sense.sense_name])
 
+    call_deferred("_setup")
+
 func _on_health_depleted():
     _anim.travel("die")
     set_physics_process(false)
     emit_signal("died")
 
 func _on_sense_detected(target, sense):
+    pass
+
+func _setup():
     pass
 
 func hurt(amount):

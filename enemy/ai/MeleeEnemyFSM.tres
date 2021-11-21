@@ -1,0 +1,206 @@
+[gd_resource type="Resource" load_steps=29 format=2]
+
+[ext_resource path="res://addons/imjp94.yafsm/src/conditions/Condition.gd" type="Script" id=1]
+[ext_resource path="res://addons/imjp94.yafsm/src/states/State.gd" type="Script" id=2]
+[ext_resource path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" type="Script" id=3]
+[ext_resource path="res://addons/imjp94.yafsm/src/conditions/BooleanCondition.gd" type="Script" id=4]
+[ext_resource path="res://addons/imjp94.yafsm/src/states/StateMachine.gd" type="Script" id=5]
+
+[sub_resource type="Resource" id=29]
+script = ExtResource( 2 )
+__meta__ = {
+"graph_offset": Vector2( 488, -40 )
+}
+name = "Alerted"
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 2 )
+__meta__ = {
+"graph_offset": Vector2( 1058.5, -140 )
+}
+name = "Attacking"
+
+[sub_resource type="Resource" id=21]
+script = ExtResource( 2 )
+__meta__ = {
+"graph_offset": Vector2( 742.5, 160 )
+}
+name = "Chasing"
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 2 )
+__meta__ = {
+"graph_offset": Vector2( -112, 40 )
+}
+name = "Entry"
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 2 )
+__meta__ = {
+"graph_offset": Vector2( 88, -40 )
+}
+name = "Idle"
+
+[sub_resource type="Resource" id=43]
+script = ExtResource( 2 )
+__meta__ = {
+"graph_offset": Vector2( 274, 80 )
+}
+name = "Suspicious"
+
+[sub_resource type="Resource" id=36]
+script = ExtResource( 4 )
+name = "is_enemy_in_range"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=37]
+script = ExtResource( 3 )
+from = "Alerted"
+to = "Attacking"
+conditions = {
+"is_enemy_in_range": SubResource( 36 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=33]
+script = ExtResource( 4 )
+name = "is_confident"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=34]
+script = ExtResource( 4 )
+name = "is_enemy_in_range"
+comparation = 0
+value = false
+
+[sub_resource type="Resource" id=35]
+script = ExtResource( 3 )
+from = "Alerted"
+to = "Chasing"
+conditions = {
+"is_confident": SubResource( 33 ),
+"is_enemy_in_range": SubResource( 34 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=41]
+script = ExtResource( 4 )
+name = "is_enemy_in_range"
+comparation = 0
+value = false
+
+[sub_resource type="Resource" id=42]
+script = ExtResource( 3 )
+from = "Attacking"
+to = "Chasing"
+conditions = {
+"is_enemy_in_range": SubResource( 41 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=30]
+script = ExtResource( 4 )
+name = "is_enemy_in_range"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=25]
+script = ExtResource( 3 )
+from = "Chasing"
+to = "Attacking"
+conditions = {
+"is_enemy_in_range": SubResource( 30 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=39]
+script = ExtResource( 1 )
+name = "ready"
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 3 )
+from = "Entry"
+to = "Idle"
+conditions = {
+"ready": SubResource( 39 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=44]
+script = ExtResource( 1 )
+name = "enemy_sensed"
+
+[sub_resource type="Resource" id=45]
+script = ExtResource( 3 )
+from = "Idle"
+to = "Suspicious"
+conditions = {
+"enemy_sensed": SubResource( 44 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=50]
+script = ExtResource( 4 )
+name = "is_enemy_in_los"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=47]
+script = ExtResource( 3 )
+from = "Idle"
+to = "Alerted"
+conditions = {
+"is_enemy_in_los": SubResource( 50 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=51]
+script = ExtResource( 4 )
+name = "is_enemy_in_los"
+comparation = 0
+value = true
+
+[sub_resource type="Resource" id=49]
+script = ExtResource( 3 )
+from = "Suspicious"
+to = "Alerted"
+conditions = {
+"is_enemy_in_los": SubResource( 51 )
+}
+priority = 0
+
+[resource]
+script = ExtResource( 5 )
+name = ""
+states = {
+"Alerted": SubResource( 29 ),
+"Attacking": SubResource( 22 ),
+"Chasing": SubResource( 21 ),
+"Entry": SubResource( 19 ),
+"Idle": SubResource( 20 ),
+"Suspicious": SubResource( 43 )
+}
+transitions = {
+"Alerted": {
+"Attacking": SubResource( 37 ),
+"Chasing": SubResource( 35 )
+},
+"Attacking": {
+"Chasing": SubResource( 42 )
+},
+"Chasing": {
+"Attacking": SubResource( 25 )
+},
+"Entry": {
+"Idle": SubResource( 23 )
+},
+"Idle": {
+"Alerted": SubResource( 47 ),
+"Suspicious": SubResource( 45 )
+},
+"Suspicious": {
+"Alerted": SubResource( 49 )
+}
+}

@@ -1,10 +1,13 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://enemy/MeleeEnemy.gd" type="Script" id=1]
 [ext_resource path="res://behaviors/Movement.tscn" type="PackedScene" id=2]
 [ext_resource path="res://behaviors/Sustenance.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/components/EnemyHeader.tscn" type="PackedScene" id=4]
 [ext_resource path="res://enemy/senses/SpiderSense.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/imjp94.yafsm/src/StateMachinePlayer.gd" type="Script" id=6]
+[ext_resource path="res://enemy/ai/MeleeEnemyFSM.tres" type="Resource" id=7]
+[ext_resource path="res://enemy/senses/Vision.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SphereShape" id=19]
 radius = 6.0
@@ -144,6 +147,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="Senses/SpiderSense"]
 shape = SubResource( 19 )
 
+[node name="Vision" parent="Senses" instance=ExtResource( 8 )]
+
 [node name="Skin" type="Spatial" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="Skin"]
@@ -200,3 +205,10 @@ parameters/playback = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
 
 [node name="EnemyHeader" parent="HeaderRoot" instance=ExtResource( 4 )]
+
+[node name="StateMachinePlayer" type="Node" parent="."]
+script = ExtResource( 6 )
+state_machine = ExtResource( 7 )
+
+[node name="ConfidenceTimer" type="Timer" parent="."]
+wait_time = 2.0

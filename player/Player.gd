@@ -19,6 +19,7 @@ onready var _skin: Spatial = $Skin
 onready var _weapon_hitbox: Area = $Skin/WeaponHitbox
 onready var _anim: AnimationNodeStateMachinePlayback = $AnimationTree.get("parameters/playback")
 onready var _spellcasting: Spellcasting = $Spellcasting
+onready var _eye_level: Position3D = $EyeLevel
 
 var _move_rot: float = 0
 var _rotation: float = 0
@@ -79,7 +80,9 @@ func heal(amount):
 func get_camera_forward() -> Vector3:
     return _camera.get_forward()
 
+func get_eye_level() -> Vector3:
+    return _eye_level.global_transform.origin
+
 func _on_health_depleted():
     set_physics_process(false)
     emit_signal("died")
-

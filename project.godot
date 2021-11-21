@@ -103,6 +103,11 @@ _global_script_classes=[ {
 "class": "VirtualThumbStick",
 "language": "GDScript",
 "path": "res://ui/components/VirtualThumbStick.gd"
+}, {
+"base": "Spatial",
+"class": "Vision",
+"language": "GDScript",
+"path": "res://enemy/senses/Vision.gd"
 } ]
 _global_script_class_icons={
 "AsyncLoad": "",
@@ -123,7 +128,8 @@ _global_script_class_icons={
 "SpiderSense": "",
 "Sustenance": "",
 "VirtualButton": "",
-"VirtualThumbStick": ""
+"VirtualThumbStick": "",
+"Vision": ""
 }
 
 [application]
@@ -147,7 +153,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/scatter/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/imjp94.yafsm/plugin.cfg", "res://addons/scatter/plugin.cfg" )
 
 [input]
 

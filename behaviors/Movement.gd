@@ -18,7 +18,6 @@ export(float) var jump_cooldown: float = .2
 
 var nav: Navigation
 var target: Spatial
-var rotate_target: Spatial
 
 var _move_vec: Vector3 = Vector3.ZERO
 var _velocity: Vector3 = Vector3.ZERO
@@ -36,29 +35,11 @@ onready var _cam := get_viewport().get_camera()
 func _ready():
     set_max_slope_angle(max_slope_angle)
 
-func _process(delta):
-    if !_last_path:
-        return
-
-    #for line in get_node("Line2D"):
-    #    var points = PoolVector2Array()
-    #    for p in _last_path:
-    #        points.append(_cam.unproject_position(p))
-    #    line.points = points
-    #    if points.size() < 2:
-    #        line.default_color = Color.red
-    #    else:
-    #        line.default_color = Color.cyan
-
 func _physics_process(delta):
     if !target || !enabled:
         return
 
     var direction = Vector3(_move_vec.x, 0, _move_vec.z)
-
-    if !lock_rotation && rotate_target && direction != Vector3.ZERO:
-        _rotation = lerp_angle(_rotation, atan2(-direction.x, -direction.z), turn_speed * delta)
-        rotate_target.rotation.y = _rotation
 
     _velocity = _velocity.linear_interpolate(direction * move_speed, acceleration * delta)
 
@@ -126,3 +107,22 @@ func navigate_towards(position: Vector3):
         _move_vec = Vector3.ZERO
     else:
         _move_vec = dir.normalized()
+
+func stop():
+    set_movement_vector(Vector3.ZERO)
+
+func face_movement_direction(node: Spatial, delta: float):
+    if lock_rotation:
+        return
+
+    _rotation = lerp_angle(_rotation, atan2(_move_vec.z, _move_vec.x), turn_speed * delta)
+    node.rotation.y = _rotation
+
+func face_target(node: Spatial, target: Spatial, delta: float):
+    if lock_rotation:
+        return
+    
+    var look_vec := target.global_transform.origin - node.global_transform.origin
+    var angle := atan2(-look_vec.x, -look_vec.z)
+    _rotation = lerp_angle(_rotation, angle, turn_speed * delta)
+    node.rotation.y = _rotation

@@ -41,13 +41,7 @@ func _process(delta):
 func _on_level_load_finished(outcome, args, level_id, loadable):
     match [outcome, args]:
         ["loaded", var Scene]:
-            var level: BaseLevel = Scene.instance()
-            add_child(level)
-            _current_level = level
-            _current_level_id = level_id
-            emit_signal("loaded")
-            level.connect("player_died", self, "_on_player_died")
-            level.connect("enemy_died", self, "_on_enemy_died")
+            _setup_level(Scene, level_id)
 
         ["failed", var error]:
             print("Load failed %s" % [error])
@@ -69,6 +63,15 @@ func _on_enemy_died(enemy):
     if enemy && enemy.is_in_group("boss"):
         get_parent().finish_game(true)
 
+func _setup_level(Scene: PackedScene, level_id):
+    var level: BaseLevel = Scene.instance()
+    add_child(level)
+    _current_level = level
+    _current_level_id = level_id
+    emit_signal("loaded")
+    level.connect("player_died", self, "_on_player_died")
+    level.connect("enemy_died", self, "_on_enemy_died")
+
 func unload_level():
     if _current_level:
         _current_level.queue_free()
@@ -84,8 +87,12 @@ func load_level(level_id):
         return
 
     emit_signal("loading")
-    var loadable: AsyncLoad = _loader.load_resource(level_scene_path)
-    loadable.connect("finished", self, "_on_level_load_finished", [level_id, loadable], CONNECT_ONESHOT)
+    if OS.can_use_threads():
+        var loadable: AsyncLoad = _loader.load_resource(level_scene_path)
+        loadable.connect("finished", self, "_on_level_load_finished", [level_id, loadable], CONNECT_ONESHOT)
+    else:
+        var Scene = load(level_scene_path)
+        _setup_level(Scene, level_id)
 
 func get_current_level_id() -> int:
     return _current_level_id if _current_level_id >= 0 else -1

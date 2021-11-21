@@ -255,3 +255,6 @@ tree_root = SubResource( 6 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 7 )
+
+[node name="EyeLevel" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64241, 0 )

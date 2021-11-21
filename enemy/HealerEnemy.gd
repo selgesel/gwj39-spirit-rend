@@ -29,7 +29,7 @@ func _physics_process(delta):
         _anim.travel("attack")
 
 func _on_sense_detected(target, sense):
-    if sense == "ally-detector":
+    if sense == "ally-detector" && target.is_in_group("enemy"):
         var key := str(target)
         _tracked_allies[key] = target
         target.connect("tree_exited", self, "_on_ally_died", [key])
