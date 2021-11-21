@@ -1,0 +1,129 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/HUD.gd" type="Script" id=1]
+[ext_resource path="res://ui/components/SustenanceBar.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/1x32.png" type="Texture" id=3]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 220.0
+margin_bottom = 44.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBarWrapper" type="Control" parent="VBoxContainer"]
+margin_right = 220.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 220, 24 )
+script = ExtResource( 2 )
+
+[node name="BarUnder" type="TextureProgress" parent="VBoxContainer/HealthBarWrapper"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 3 )
+tint_under = Color( 0.101961, 0.101961, 0.101961, 1 )
+tint_progress = Color( 0.321569, 0.12549, 0.0313726, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarOver" type="TextureProgress" parent="VBoxContainer/HealthBarWrapper"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 3 )
+tint_progress = Color( 0.866667, 0.160784, 0, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/HealthBarWrapper"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.5
+margin_top = -7.0
+margin_right = 26.5
+margin_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100/100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaBarWrapper" type="Control" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 220.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 220, 16 )
+script = ExtResource( 2 )
+
+[node name="BarUnder" type="TextureProgress" parent="VBoxContainer/ManaBarWrapper"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 3 )
+tint_under = Color( 0.101961, 0.101961, 0.101961, 1 )
+tint_progress = Color( 0.203922, 0.141176, 0.560784, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarOver" type="TextureProgress" parent="VBoxContainer/ManaBarWrapper"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 3 )
+tint_progress = Color( 0.172549, 0.745098, 0.87451, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/ManaBarWrapper"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.5
+margin_top = -7.0
+margin_right = 26.5
+margin_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100/100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -18.0
+margin_right = 18.0
+margin_bottom = 14.0
+text = "00:00"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

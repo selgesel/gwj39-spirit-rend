@@ -1,0 +1,239 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://assets/textures/spells/seal-heal.png" type="Texture" id=1]
+[ext_resource path="res://spells/Heal.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/spells/soft-glow.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/spells/seal-subglow.png" type="Texture" id=4]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="Gradient" id=24]
+offsets = PoolRealArray( 0, 0.312883, 0.723926, 1 )
+colors = PoolColorArray( 0, 0.425781, 0.276093, 1, 0, 1.4, 0.39, 1, 2, 2, 0.8, 1, 1.15556, 1.15556, 0.968889, 1 )
+
+[sub_resource type="GradientTexture" id=25]
+gradient = SubResource( 24 )
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.317204, 0.776136 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 5
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 0.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 1, 0, 1 )
+gravity = Vector3( 0, 10, 0 )
+linear_accel = 4.0
+linear_accel_random = 0.62
+scale_curve = SubResource( 8 )
+color_ramp = SubResource( 25 )
+
+[sub_resource type="SpatialMaterial" id=22]
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_cull_mode = 2
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=23]
+material = SubResource( 22 )
+size = Vector2( 0.2, 0.2 )
+
+[sub_resource type="Gradient" id=29]
+offsets = PoolRealArray( 0, 0.539877, 0.779141, 1 )
+colors = PoolColorArray( 0, 0.425781, 0.276093, 1, 0, 1.4, 0.388235, 0.392157, 2, 2, 0.8, 0.454902, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=30]
+gradient = SubResource( 29 )
+
+[sub_resource type="Curve" id=31]
+_data = [ Vector2( 0, 0 ), 0.0, 3.77203, 0, 0, Vector2( 0.263441, 0.936364 ), 6.28052, 0.889952, 0, 0, Vector2( 1, 0 ), -4.86136, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=32]
+curve = SubResource( 31 )
+
+[sub_resource type="ParticlesMaterial" id=28]
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+scale_curve = SubResource( 32 )
+color_ramp = SubResource( 30 )
+
+[sub_resource type="SpatialMaterial" id=27]
+flags_transparent = true
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_cull_mode = 2
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=26]
+material = SubResource( 27 )
+size = Vector2( 4, 4 )
+
+[sub_resource type="SpatialMaterial" id=33]
+flags_transparent = true
+flags_do_not_receive_shadows = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_cull_mode = 2
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="QuadMesh" id=34]
+material = SubResource( 33 )
+size = Vector2( 4, 4 )
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "cast"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/cast/node = SubResource( 18 )
+states/cast/position = Vector2( 732, 139 )
+states/idle/node = SubResource( 19 )
+states/idle/position = Vector2( 503, 139 )
+transitions = [ "idle", "cast", SubResource( 20 ), "cast", "idle", SubResource( 21 ) ]
+start_node = "idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+
+[sub_resource type="Animation" id=36]
+resource_name = "cast"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Seal:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("Timer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ -1 ],
+"method": "start"
+} ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seal:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Heal" type="Area"]
+monitorable = false
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+shape = SubResource( 1 )
+
+[node name="Particles" type="Particles" parent="."]
+emitting = false
+amount = 40
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 23 )
+
+[node name="Seal" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+layers = 2
+amount = 1
+lifetime = 2.0
+process_material = SubResource( 28 )
+draw_passes = 2
+draw_pass_1 = SubResource( 26 )
+draw_pass_2 = SubResource( 34 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 16 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 17 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/cast = SubResource( 36 )
+anims/idle = SubResource( 35 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3

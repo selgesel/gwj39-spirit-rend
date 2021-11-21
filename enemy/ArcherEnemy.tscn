@@ -1,0 +1,209 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://enemy/RangedEnemy.gd" type="Script" id=1]
+[ext_resource path="res://behaviors/Movement.tscn" type="PackedScene" id=2]
+[ext_resource path="res://behaviors/Sustenance.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/components/EnemyHeader.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemy/senses/SpiderSense.tscn" type="PackedScene" id=5]
+[ext_resource path="res://projectiles/SimpleArrow.tscn" type="PackedScene" id=6]
+
+[sub_resource type="SphereShape" id=26]
+radius = 32.0
+
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.4
+mid_height = 0.8
+
+[sub_resource type="CylinderMesh" id=2]
+top_radius = 0.0
+bottom_radius = 0.052
+height = 0.304
+
+[sub_resource type="CubeMesh" id=18]
+size = Vector3( 0.01, 1.2, 0.01 )
+
+[sub_resource type="CubeMesh" id=19]
+size = Vector3( 0.03, 0.568, 0.03 )
+
+[sub_resource type="CubeMesh" id=20]
+size = Vector3( 0.03, 0.45, 0.03 )
+
+[sub_resource type="CapsuleShape" id=3]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="Animation" id=7]
+resource_name = "die"
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Skin")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.4, 1, 0, 0, 0, 0.707107, 0, 0, 0.707107, 1, 1, 1, 0.7, 1, 0, 0, 0, 0.707107, 0, 0, 0.707107, 1, 1, 1, 1, 1, 0, -0.736886, 0, 0.707107, 0, 0, 0.707107, 1, 1, 1 )
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Skin")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=21]
+resource_name = "shoot"
+length = 0.5
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Skin/Weapon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.453445, 0.927389, 0, 0, 0, 0, 1, 1, 1, 1, 0.2, 1, 0.453445, 0.927389, -0.138532, 0, 0, 0, 1, 1, 1, 1, 0.3, 1, 0.453445, 0.927389, 0.210246, 0, 0, 0, 1, 1, 1, 1, 0.5, 1, 0.453445, 0.927389, 0, 0, 0, 0, 1, 1, 1, 1 )
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachine" id=4]
+states/die/node = SubResource( 8 )
+states/die/position = Vector2( 798, 242 )
+states/idle/node = SubResource( 9 )
+states/idle/position = Vector2( 546, 161 )
+states/shoot/node = SubResource( 22 )
+states/shoot/position = Vector2( 804, 76 )
+transitions = [ "idle", "die", SubResource( 10 ), "idle", "shoot", SubResource( 23 ), "shoot", "idle", SubResource( 24 ), "shoot", "die", SubResource( 25 ) ]
+start_node = "idle"
+end_node = "die"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+
+[node name="ArcherEnemy" type="KinematicBody" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource( 1 )
+projectile_scene = ExtResource( 6 )
+
+[node name="Movement" parent="." instance=ExtResource( 2 )]
+move_speed = 4.0
+
+[node name="Health" parent="." instance=ExtResource( 3 )]
+total = 60.0
+
+[node name="Senses" type="Spatial" parent="."]
+
+[node name="SpiderSense" parent="Senses" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Senses/SpiderSense"]
+shape = SubResource( 26 )
+
+[node name="Skin" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Skin"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.8, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Skin"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.16499, -0.528893 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Weapon" type="Spatial" parent="Skin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.453445, 0.927389, -0.138532 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="String" type="MeshInstance" parent="Skin/Weapon"]
+mesh = SubResource( 18 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="String2" type="MeshInstance" parent="Skin/Weapon"]
+transform = Transform( 1, 0, 0, 0, -0.687328, -0.726347, 0, 0.726347, -0.687328, 0, -0.417914, -0.198721 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="String4" type="MeshInstance" parent="Skin/Weapon"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0268967, -0.399762 )
+mesh = SubResource( 20 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="String3" type="MeshInstance" parent="Skin/Weapon"]
+transform = Transform( 1, 0, 0, 0, 0.726347, -0.687328, 0, 0.687328, 0.726347, 0, 0.388267, -0.198721 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.8, 0 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/die = SubResource( 7 )
+anims/idle = SubResource( 6 )
+anims/shoot = SubResource( 21 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 4 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 5 )
+
+[node name="HeaderRoot" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
+
+[node name="EnemyHeader" parent="HeaderRoot" instance=ExtResource( 4 )]
+
+[node name="ArrowLaunchOrigin" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.536674, 1.17974, -0.270946 )

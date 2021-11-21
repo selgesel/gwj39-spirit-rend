@@ -1,0 +1,257 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://player/Player.gd" type="Script" id=1]
+[ext_resource path="res://behaviors/Movement.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/Controls.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/ControllableCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://behaviors/Sustenance.tscn" type="PackedScene" id=5]
+[ext_resource path="res://behaviors/Spellcasting.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/models/PlayerSkin.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1.49886, 1.18119, 1.29286 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 0.1, 0.1, 1.4 )
+
+[sub_resource type="CylinderMesh" id=14]
+top_radius = 0.05
+bottom_radius = 0.05
+radial_segments = 8
+rings = 2
+
+[sub_resource type="CapsuleShape" id=3]
+radius = 0.3
+height = 1.19
+
+[sub_resource type="Animation" id=9]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Skin/WeaponArm")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.584885, 0.943541, -0.339367, 0.615373, 0, 0, 0.788236, 1, 1, 1, 0.1, 1, -0.587722, 0.997797, -0.339368, 0.144964, 0.701735, -0.344775, 0.60637, 1, 1, 1, 0.3, 1, 0.24678, 0.997797, -0.709894, 0.145123, -0.74907, 0.0100968, 0.646321, 1, 1, 1, 0.4, 1, -0.584885, 0.943541, -0.339367, 0.615373, 0, 0, 0.788236, 1, 1, 1 )
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "cast_spell"
+length = 0.6
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Skin/StaffArm")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0.6, 1.3, -0.3, 0, 0, 0, 1, 1, 1, 1, 0.1, 1, 0.6, 1.86038, -0.500127, 0, 0, 0, 1, 1, 1, 1, 0.3, 1, 0.6, 1.3, -0.3, 0, 0, 0, 1, 1, 1, 1 )
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_casting"
+}, {
+"args": [  ],
+"method": "cast_spell"
+}, {
+"args": [  ],
+"method": "finish_casting"
+} ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "die"
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Skin")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.3, 1, 0, 0, 0, 0.707107, 0, 0, 0.707107, 1, 1, 1, 0.7, 1, 0, 0, 0, 0.707107, 0, 0, 0.707107, 1, 1, 1, 1, 1, 0, -0.792606, 0, 0.707107, 0, 0, 0.707107, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Skin/WeaponArm")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, -0.584885, 0.943541, -0.339367, 0.615373, 0, 0, 0.788236, 1, 1, 1, 0.3, 1, -0.584885, 0.943541, -0.339367, 0.615373, 0, 0, 0.788236, 1, 1, 1, 0.6, 1, -0.584885, 0.943541, -0.0524099, 0.699587, 0.0749124, 0.12489, 0.699549, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Skin/StaffArm")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, 0.6, 1.3, -0.3, 0, 0, 0, 1, 1, 1, 1, 0.3, 1, 0.6, 1.3, -0.3, 0, 0, 0, 1, 1, 1, 1, 0.6, 1, 0.99235, 1.3, -0.0566086, 0, 0, -0.173854, 0.984771, 1, 1, 1 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "idle"
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Skin")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Skin/WeaponArm")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, -0.584885, 0.943541, -0.339367, 0.615373, 0, 0, 0.788236, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Skin/StaffArm")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, 0.6, 1.3, -0.3, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "cast_spell"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachine" id=6]
+states/attack/node = SubResource( 10 )
+states/attack/position = Vector2( 827, 61 )
+states/cast_spell/node = SubResource( 16 )
+states/cast_spell/position = Vector2( 827, 197 )
+states/die/node = SubResource( 22 )
+states/die/position = Vector2( 638, 288 )
+states/idle/node = SubResource( 11 )
+states/idle/position = Vector2( 541, 126 )
+transitions = [ "idle", "attack", SubResource( 12 ), "attack", "idle", SubResource( 13 ), "attack", "cast_spell", SubResource( 17 ), "cast_spell", "attack", SubResource( 18 ), "cast_spell", "idle", SubResource( 19 ), "idle", "cast_spell", SubResource( 20 ), "idle", "die", SubResource( 23 ), "cast_spell", "die", SubResource( 24 ), "attack", "die", SubResource( 25 ) ]
+start_node = "idle"
+end_node = "die"
+graph_offset = Vector2( 35, -8 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
+
+[node name="Player" type="KinematicBody" groups=["player"]]
+collision_layer = 2
+collision_mask = 23
+script = ExtResource( 1 )
+
+[node name="Movement" parent="." instance=ExtResource( 2 )]
+move_speed = 10.0
+max_jumps = 1
+
+[node name="Controls" parent="." instance=ExtResource( 3 )]
+
+[node name="Health" parent="." instance=ExtResource( 5 )]
+
+[node name="Mana" parent="." instance=ExtResource( 5 )]
+
+[node name="Spellcasting" parent="." instance=ExtResource( 6 )]
+
+[node name="Skin" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="WeaponHitbox" type="Area" parent="Skin"]
+collision_layer = 8
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Skin/WeaponHitbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.11819 )
+shape = SubResource( 4 )
+
+[node name="WeaponArm" type="Spatial" parent="Skin"]
+transform = Transform( 1, 0, 0, 0, 0.242632, -0.970118, 0, 0.970118, 0.242632, -0.584885, 0.943541, -0.339367 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Skin/WeaponArm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7 )
+mesh = SubResource( 5 )
+material/0 = null
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaffArm" type="Spatial" parent="Skin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.3, -0.3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Skin/StaffArm"]
+mesh = SubResource( 14 )
+material/0 = null
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerSkin" parent="Skin" instance=ExtResource( 7 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.9, 0 )
+shape = SubResource( 3 )
+
+[node name="CamRoot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+
+[node name="ControllableCamera" parent="CamRoot" instance=ExtResource( 4 )]
+distance = 2.75
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 9 )
+anims/cast_spell = SubResource( 15 )
+anims/die = SubResource( 21 )
+anims/idle = SubResource( 8 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 6 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 7 )

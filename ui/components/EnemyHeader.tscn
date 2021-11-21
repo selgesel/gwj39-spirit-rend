@@ -1,0 +1,129 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/components/EnemyHeader.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/1x32.png" type="Texture" id=2]
+[ext_resource path="res://ui/components/SustenanceBar.gd" type="Script" id=3]
+
+[node name="EnemyHeader" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1366.0
+margin_bottom = -768.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -34.0
+margin_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="Control" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 200.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 200, 16 )
+script = ExtResource( 3 )
+
+[node name="BarUnder" type="TextureProgress" parent="VBoxContainer/HealthBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.403922, 0.403922, 0.403922, 1 )
+tint_progress = Color( 0.67451, 0.145098, 0.00392157, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarOver" type="TextureProgress" parent="VBoxContainer/HealthBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.403922, 0.403922, 0.403922, 1 )
+tint_progress = Color( 0.0352941, 0.654902, 0, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/HealthBar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -8.0
+margin_right = 100.0
+margin_bottom = 8.0
+text = "100/100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaBar" type="Control" parent="VBoxContainer"]
+visible = false
+margin_top = 20.0
+margin_right = 200.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 200, 16 )
+script = ExtResource( 3 )
+
+[node name="BarUnder" type="TextureProgress" parent="VBoxContainer/ManaBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.403922, 0.403922, 0.403922, 1 )
+tint_progress = Color( 0.67451, 0.145098, 0.00392157, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarOver" type="TextureProgress" parent="VBoxContainer/ManaBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 2 )
+tint_under = Color( 0.403922, 0.403922, 0.403922, 1 )
+tint_progress = Color( 0.0352941, 0.654902, 0, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/ManaBar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -8.0
+margin_right = 100.0
+margin_bottom = 8.0
+text = "100/100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]

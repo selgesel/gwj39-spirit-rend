@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Game.gd" type="Script" id=3]
+[ext_resource path="res://assets/shaders/sobel.gdshader" type="Shader" id=4]
+[ext_resource path="res://scripts/AsyncLoader.tscn" type="PackedScene" id=5]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
+shader_param/alpha = 0.492
+
+[node name="Game" type="Spatial" groups=["game"]]
+pause_mode = 1
+script = ExtResource( 3 )
+
+[node name="AsyncLoader" parent="." instance=ExtResource( 5 )]
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="HUDLayer" instance=ExtResource( 2 )]
+
+[node name="InversionPost" type="ColorRect" parent="HUDLayer"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

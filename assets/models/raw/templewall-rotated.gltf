@@ -1,0 +1,108 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.6.16",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "TempleWall-Rotated"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "PaletteMaterial",
+            "pbrMetallicRoughness" : {}
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube.032",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 68,
+            "max" : [
+                0.2989993393421173,
+                3.1999998092651367,
+                0.9999990463256836
+            ],
+            "min" : [
+                -0.2990012466907501,
+                2.3841856489070778e-07,
+                -1.0000009536743164
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 68,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 68,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 108,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 816,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 816,
+            "byteOffset" : 816
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 544,
+            "byteOffset" : 1632
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 216,
+            "byteOffset" : 2176
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 2392,
+            "uri" : "data:application/octet-stream;base64,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"
+        }
+    ]
+}

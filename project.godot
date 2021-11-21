@@ -1,0 +1,221 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "AsyncLoad",
+"language": "GDScript",
+"path": "res://scripts/AsyncLoad.gd"
+}, {
+"base": "Node",
+"class": "AsyncLoader",
+"language": "GDScript",
+"path": "res://scripts/AsyncLoader.gd"
+}, {
+"base": "KinematicBody",
+"class": "BaseEnemy",
+"language": "GDScript",
+"path": "res://enemy/BaseEnemy.gd"
+}, {
+"base": "Node",
+"class": "BaseLevel",
+"language": "GDScript",
+"path": "res://levels/BaseLevel.gd"
+}, {
+"base": "KinematicBody",
+"class": "BaseProjectile",
+"language": "GDScript",
+"path": "res://projectiles/BaseProjectile.gd"
+}, {
+"base": "Area",
+"class": "BaseSpell",
+"language": "GDScript",
+"path": "res://spells/BaseSpell.gd"
+}, {
+"base": "Spatial",
+"class": "ControllableCamera",
+"language": "GDScript",
+"path": "res://player/ControllableCamera.gd"
+}, {
+"base": "Node",
+"class": "Controls",
+"language": "GDScript",
+"path": "res://player/Controls.gd"
+}, {
+"base": "Spatial",
+"class": "Game",
+"language": "GDScript",
+"path": "res://scenes/Game.gd"
+}, {
+"base": "Node",
+"class": "LevelManager",
+"language": "GDScript",
+"path": "res://levels/LevelManager.gd"
+}, {
+"base": "Control",
+"class": "MobileControls",
+"language": "GDScript",
+"path": "res://player/MobileControls.gd"
+}, {
+"base": "Node",
+"class": "Movement",
+"language": "GDScript",
+"path": "res://behaviors/Movement.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player",
+"language": "GDScript",
+"path": "res://player/Player.gd"
+}, {
+"base": "Node",
+"class": "Root",
+"language": "GDScript",
+"path": "res://scenes/Root.gd"
+}, {
+"base": "Node",
+"class": "Spellcasting",
+"language": "GDScript",
+"path": "res://behaviors/Spellcasting.gd"
+}, {
+"base": "Area",
+"class": "SpiderSense",
+"language": "GDScript",
+"path": "res://enemy/senses/SpiderSense.gd"
+}, {
+"base": "Node",
+"class": "Sustenance",
+"language": "GDScript",
+"path": "res://behaviors/Sustenance.gd"
+}, {
+"base": "Control",
+"class": "VirtualButton",
+"language": "GDScript",
+"path": "res://ui/components/VirtualButton.gd"
+}, {
+"base": "Control",
+"class": "VirtualThumbStick",
+"language": "GDScript",
+"path": "res://ui/components/VirtualThumbStick.gd"
+} ]
+_global_script_class_icons={
+"AsyncLoad": "",
+"AsyncLoader": "",
+"BaseEnemy": "",
+"BaseLevel": "",
+"BaseProjectile": "",
+"BaseSpell": "",
+"ControllableCamera": "",
+"Controls": "",
+"Game": "",
+"LevelManager": "",
+"MobileControls": "",
+"Movement": "",
+"Player": "",
+"Root": "",
+"Spellcasting": "",
+"SpiderSense": "",
+"Sustenance": "",
+"VirtualButton": "",
+"VirtualThumbStick": ""
+}
+
+[application]
+
+config/name="GWJ39 - Inversion"
+run/main_scene="res://scenes/Root.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://scripts/Globals.gd"
+
+[display]
+
+window/size/width=1366
+window/size/height=768
+window/size/test_width=1920
+window/size/test_height=1080
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/scatter/plugin.cfg" )
+
+[input]
+
+move_forward={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_backwards={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+zoom_in={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+zoom_out={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+skill={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+3d_physics/layer_1="environment"
+3d_physics/layer_2="player"
+3d_physics/layer_3="enemy"
+3d_physics/layer_4="player-weapon-hitbox"
+3d_physics/layer_5="enemy-sense"
+3d_physics/layer_6="enemy-weapon-hitbox"
+3d_physics/layer_7="water"
+3d_physics/layer_8="killzone"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

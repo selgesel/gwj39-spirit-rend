@@ -1,0 +1,191 @@
+[gd_scene load_steps=48 format=2]
+
+[ext_resource path="res://assets/models/walls/TempleWallRotated.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/walls/WallStripedTe.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/models/walls/TempleWallLNW.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/models/walls/TempleWallLSW.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/models/walls/WallGateRotated.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/models/walls/TempleWallDiamondWindow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/models/walls/TempleWallLSE.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/models/walls/TempleWallX.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/models/walls/WallGate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/models/walls/WallStripedTw.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/models/walls/TempleWallTS.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/models/walls/WallStripedTn.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/models/walls/TempleWall.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/models/walls/TempleWallDiamondWindowRotated.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/models/walls/TempleWallLNE.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/models/walls/TempleWallTE.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/models/walls/WallStripedTs.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/models/walls/WallStripedX.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/models/walls/TempleWallTN.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/models/walls/TempleWallTW.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/models/walls/WallStripedDiamondWindow.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/models/walls/WallStripedDiamondWindowRotated.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/models/walls/WallStripedLNE.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/models/walls/WallStripedLNW.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/models/walls/WallStripedLSE.tscn" type="PackedScene" id=25]
+[ext_resource path="res://assets/models/walls/WallStripedLSW.tscn" type="PackedScene" id=26]
+[ext_resource path="res://assets/models/walls/WallStripedRotated.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/models/walls/WallStriped.tscn" type="PackedScene" id=28]
+[ext_resource path="res://assets/models/walls/WallGateCircle.tscn" type="PackedScene" id=29]
+[ext_resource path="res://assets/models/walls/WallGateCircleRotated.tscn" type="PackedScene" id=30]
+[ext_resource path="res://assets/models/structure/WoodenTile.tscn" type="PackedScene" id=31]
+[ext_resource path="res://assets/models/walls/TempleBodyWallS.tscn" type="PackedScene" id=32]
+[ext_resource path="res://assets/models/walls/TempleBodyWallDiamondWindowE.tscn" type="PackedScene" id=33]
+[ext_resource path="res://assets/models/walls/TempleBodyWallDiamondWindowN.tscn" type="PackedScene" id=34]
+[ext_resource path="res://assets/models/walls/TempleBodyWallDiamondWindowW.tscn" type="PackedScene" id=35]
+[ext_resource path="res://assets/models/walls/TempleBodyWallDiamondWindowS.tscn" type="PackedScene" id=36]
+[ext_resource path="res://assets/models/walls/TempleBodyWallE.tscn" type="PackedScene" id=37]
+[ext_resource path="res://assets/models/walls/TempleBodyWallGateCircleE.tscn" type="PackedScene" id=38]
+[ext_resource path="res://assets/models/walls/TempleBodyWallGateCircleN.tscn" type="PackedScene" id=39]
+[ext_resource path="res://assets/models/walls/TempleBodyWallGateCircleS.tscn" type="PackedScene" id=40]
+[ext_resource path="res://assets/models/walls/TempleBodyWallGateCircleW.tscn" type="PackedScene" id=41]
+[ext_resource path="res://assets/models/walls/TempleBodyWallLSE.tscn" type="PackedScene" id=42]
+[ext_resource path="res://assets/models/walls/TempleBodyWallLNW.tscn" type="PackedScene" id=43]
+[ext_resource path="res://assets/models/walls/TempleBodyWallLSW.tscn" type="PackedScene" id=44]
+[ext_resource path="res://assets/models/walls/TempleBodyWallLNE.tscn" type="PackedScene" id=45]
+[ext_resource path="res://assets/models/walls/TempleBodyWallN.tscn" type="PackedScene" id=46]
+[ext_resource path="res://assets/models/walls/TempleBodyWallW.tscn" type="PackedScene" id=47]
+
+[node name="StripedWalls" type="Spatial"]
+
+[node name="WallStriped" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6144, 0, 0 )
+
+[node name="WallStripedDiamondWindow" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.01126, 0, 0 )
+
+[node name="WallStripedDiamondWindowRotated" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.27767 )
+
+[node name="WallStripedLNE" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8694, 0, 0 )
+
+[node name="WallStripedLNW" parent="." instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96019, 0, 0 )
+
+[node name="WallStripedLSE" parent="." instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2372, 0, 0 )
+
+[node name="WallStripedLSW" parent="." instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.40723, 0, 0 )
+
+[node name="WallStripedRotated" parent="." instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5258 )
+
+[node name="WallStripedX" parent="." instance=ExtResource( 18 )]
+
+[node name="WallGate" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5682, 0, 0 )
+
+[node name="WallGateRotated" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.9137 )
+
+[node name="WallStripedTe" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.7609 )
+
+[node name="WallStripedTn" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.08111 )
+
+[node name="WallStripedTs" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.42108 )
+
+[node name="WallStripedTw" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.84662 )
+
+[node name="TempleWall" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3537, 0, 0 )
+
+[node name="TempleWallDiamondWindow" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.1918, 0, 0 )
+
+[node name="TempleWallDiamondWindowRotated" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3996, 0, -10.533 )
+
+[node name="TempleWallLNE" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0932, 0, 0 )
+
+[node name="TempleWallLNW" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4037, 0, 0 )
+
+[node name="TempleWallLSE" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7169, 0, 0 )
+
+[node name="TempleWallLSW" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4332, 0, 0 )
+
+[node name="TempleWallRotated" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3996, 0, -5.03785 )
+
+[node name="TempleWallTE" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3996, 0, 3.09884 )
+
+[node name="TempleWallTN" parent="." instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3996, 0, 6.71467 )
+
+[node name="TempleWallTS" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3996, 0, 8.63442 )
+
+[node name="TempleWallTW" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3996, 0, 0 )
+
+[node name="TempleWallX" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3996, 0, 0 )
+
+[node name="WallGateCircle" parent="." instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -2.90836 )
+
+[node name="WallGateCircleRotated" parent="." instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00831, 0, -16.0219 )
+
+[node name="WoodenTile" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -8 )
+
+[node name="TempleBodyWallS" parent="." instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.051, 0, 6.13178 )
+
+[node name="TempleBodyWallDiamondWindowE" parent="." instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8809, -6.59272, -22.1384 )
+
+[node name="TempleBodyWallDiamondWindowN" parent="." instance=ExtResource( 34 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7227, -6.59272, -34.1642 )
+
+[node name="TempleBodyWallDiamondWindowS" parent="." instance=ExtResource( 36 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3781, -6.59272, -50.3942 )
+
+[node name="TempleBodyWallDiamondWindowW" parent="." instance=ExtResource( 35 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3781, -6.59272, -22.1384 )
+
+[node name="TempleBodyWallE" parent="." instance=ExtResource( 37 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.72154, -6.59272, -29.9602 )
+
+[node name="TempleBodyWallGateCircleE" parent="." instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3781, -6.59272, -39.6288 )
+
+[node name="TempleBodyWallGateCircleN" parent="." instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8056, -6.59272, -22.1384 )
+
+[node name="TempleBodyWallGateCircleS" parent="." instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.3369, -6.59272, -22.1384 )
+
+[node name="TempleBodyWallGateCircleW" parent="." instance=ExtResource( 41 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1608, -6.59272, -44.7649 )
+
+[node name="TempleBodyWallLNE" parent="." instance=ExtResource( 45 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0958, -6.59272, -28.6561 )
+
+[node name="TempleBodyWallLNW" parent="." instance=ExtResource( 43 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25085, -6.59272, -22.1384 )
+
+[node name="TempleBodyWallLSE" parent="." instance=ExtResource( 42 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3781, -6.59272, -28.1886 )
+
+[node name="TempleBodyWallLSW" parent="." instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3781, -6.59272, -18.3421 )
+
+[node name="TempleBodyWallN" parent="." instance=ExtResource( 46 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.9152, -6.59272, -22.1384 )
+
+[node name="TempleBodyWallW" parent="." instance=ExtResource( 47 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64043, -6.59272, -22.1384 )
